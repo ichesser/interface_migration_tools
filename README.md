@@ -21,3 +21,4 @@ Example application of the optimal transport model to predicting migration mecha
 # Dependencies 
 Example 1: MTEX: https://mtex-toolbox.github.io/
 
+OVITO Basic (https://www.ovito.org/) will be convenient for visualizing input and output files.
