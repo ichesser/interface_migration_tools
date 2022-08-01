@@ -6,20 +6,14 @@ This repository contains a set of tutorials for analysis of shuffling patterns d
 
 2. Chesser, Ian, Elizabeth Holm, and Brandon Runnels. "Optimal transportation of grain boundaries: A forward model for predicting migration mechanisms." Acta Materialia 210 (2021): 116823.
 
-# GB Dataset
-
-The primary dataset is 
-
-The following relevant files are found in the Data directory: 
-
-# Tutorial Code
-
-**Example 0**: <br/>
-Analyze displacement texture as a post-processing step of an atomistic simulation with a known initial and final state before and after migration: 
+# Tutorial Code 
 
 **Example 1**: <br/>
-Example application of the forward model to studying migration of the Sigma 5 (100) twist GB 
+Analyze displacement texture as a post-processing step of an atomistic simulation with a known initial and final state before and after migration. 
+
+**Example 2**: <br/>
+Example application of the forward model to predicting migration mechanisms of the Sigma 5 (100) twist GB 
 
 # Dependencies 
-MTEX: https://mtex-toolbox.github.io/
+Example 1: MTEX: https://mtex-toolbox.github.io/
 
