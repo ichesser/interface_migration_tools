@@ -6,6 +6,10 @@ This repository contains a set of tutorials for analysis of shuffling patterns d
 
 2. Chesser, Ian, Elizabeth Holm, and Brandon Runnels. "Optimal transportation of grain boundaries: A forward model for predicting migration mechanisms." Acta Materialia 210 (2021): 116823.
 
+The algorithm in paper 2 builds upon code from the following paper: 
+
+Peyré, Gabriel, and Marco Cuturi. "Computational optimal transport: With applications to data science." Foundations and Trends® in Machine Learning 11.5-6 (2019): 355-607.
+
 # Tutorial Code 
 
 **Example 1**: <br/>
