@@ -58,59 +58,8 @@ sphereplt=true; showcoincidence = true; pbcon = true;
 addshear = false; beta_xz = 0; u0_set = 0; %these options are only relevant if shear coupling factor is nonzero
 Kcutoff = 1e-8; %filter out paths with probabilities smaller than this value
 
-%% Optionally expand sytem size
-ssize = [0 0 0 0 0 0]; %extension of unit cell in -x, +x, -y, +y, -z, +z in integer CSL units
-ntxlo = ssize(1); ntxhi = ssize(2); 
-ntylo = ssize(3); ntyhi = ssize(4); 
-ntzlo = ssize(5); ntzhi = ssize(6);
+systemsizemat = [-1 0 0 0 0 0]; 
 
-basislenx = Lxunit; 
-basisleny = Lyunit;
-basislenz = Lzunit; 
-xreps0 = ntxlo:ntxhi;
-yreps0 = ntylo:ntyhi;
-zreps0 = ntzlo:ntzhi; 
-nx = length(xreps0);
-ny = length(yreps0);
-nz = length(zreps0); 
-
-nbasis = length(Xbasis(1,:)); %assume x and y have same length
-ndim = 3; 
-
-X = zeros(ndim,nbasis*nx*ny*nz); 
-Y = zeros(ndim,nbasis*nx*ny*nz); 
-
-%%%% tile atomic crystal structure around one unit cell of displacement pattern 
-k = 1; 
-for tx = xreps0
-    for ty = yreps0
-        for tz = zreps0
-            xadd0 = tx*basislenx; 
-            yadd0 = ty*basisleny;
-            zadd0 = tz*basislenz; 
-
-            tiled_basis_X = Xbasis + [xadd0; yadd0; zadd0]; 
-            tiled_basis_Y = Ybasis + [xadd0; yadd0; zadd0];
-
-            startind = ((k-1)*nbasis+1);
-            endind = k*nbasis;
-
-            X(:,startind:endind) = tiled_basis_X;
-            Y(:,startind:endind) = tiled_basis_Y;
-            k = k+1; 
-        end
-    end
-end
-
-%%% update new box params
-xlo = xlounit + ntxlo*Lxunit; xhi = xhiunit + ntxhi*Lxunit; 
-ylo = ylounit + ntylo*Lyunit; yhi = yhiunit + ntyhi*Lyunit; 
-zlo = zlounit + ntzlo*Lzunit; zhi = zhiunit + ntzhi*Lzunit; 
-Lx = xhi-xlo;
-Ly = yhi-ylo; 
-Lz = zhi-zlo; 
-
-%% 
 
 nX = length(X); nY = length(Y); 
 if nX ~= nY
@@ -137,7 +86,7 @@ else
 end
 %%%
 % Run Sinkhorn Algorithm
-iep = 1; ish = 1;
+
 cutoff = 1/(N^2); 
 epsilon = epsset; 
 mu = ones(N,1)/N; nu = mu;
